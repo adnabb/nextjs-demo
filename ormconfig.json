@@ -1,0 +1,24 @@
+{
+   "type": "postgres",
+   "host": "59.110.70.85",
+   "port": 5432,
+   "username": "blog",
+   "password": "",
+   "database": "development",
+   "synchronize": true,
+   "logging": false,
+   "entities": [
+      "src/entity/**/*.ts"
+   ],
+   "migrations": [
+      "src/migration/**/*.ts"
+   ],
+   "subscribers": [
+      "src/subscriber/**/*.ts"
+   ],
+   "cli": {
+      "entitiesDir": "src/entity",
+      "migrationsDir": "src/migration",
+      "subscribersDir": "src/subscriber"
+   }
+}
