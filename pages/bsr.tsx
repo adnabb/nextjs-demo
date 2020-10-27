@@ -1,15 +1,13 @@
-import { GetServerSideProps, NextPage } from 'next'
+import { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { getPosts } from '../lib/posts'
 import styles from '../styles/Home.module.css'
+import {usePosts} from '../hooks/usePosts'
 
 export const Home: NextPage = () => {
-  const [posts, setPosts] = useState<Array<Post>>([])
-  useEffect(() => {
-    
-  }, [])
+  const posts = usePosts().posts
+
   return (
     <main className={styles.main}>
       <Head>
