@@ -5,8 +5,8 @@
    "username": "blog",
    "password": "",
    "database": "development",
-   "synchronize": true,
-   "logging": false,
+   "synchronize": false,
+   "logging": true,
    "entities": [
       "dist/entity/**/*.js"
    ],
