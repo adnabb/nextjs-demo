@@ -1,8 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {Column, Entity, ManyToOne, OneToMany, CreateDateColumn, UpdateDateColumn, PrimaryGeneratedColumn} from 'typeorm';
+import {Comment} from './Comment'
+import {User} from './User'
 
 @Entity('posts')
 export class Post {
-
   @PrimaryGeneratedColumn('increment')
   id: number
 
@@ -12,4 +13,18 @@ export class Post {
   @Column('text')
   content: string
 
+  @Column('int')
+  auther_id: number
+
+  @CreateDateColumn({type: 'timestamp without time zone'})
+  created_at: Date
+
+  @UpdateDateColumn({type: 'timestamp without time zone'})
+  updated_at: Date
+
+  @OneToMany(type => Comment, comment => comment.post)
+  comments: Comment[]
+ 
+  @ManyToOne(type => User, user => user.posts)
+  auther: User
 }
