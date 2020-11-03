@@ -1,6 +1,6 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreatePost1604288944053 implements MigrationInterface {
+export class CreatePosts1604385703676 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     return await queryRunner.createTable(new Table({
@@ -8,7 +8,8 @@ export class CreatePost1604288944053 implements MigrationInterface {
       columns: [
         { name: 'id', type: 'int', isPrimary: true, isGenerated: true, generationStrategy: 'increment' },
         { name: 'title', type: 'varchar' },
-        { name: 'content', type: 'text' }
+        { name: 'content', type: 'text' },
+        { name: 'auther_id', type: 'int' }
       ],
     }))
   }
