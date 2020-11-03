@@ -1,5 +1,5 @@
 import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany} from 'typeorm';
-import {Post} from './post';
+import {Post} from './Post';
 import {Comment} from './Comment'
 
 @Entity('users')

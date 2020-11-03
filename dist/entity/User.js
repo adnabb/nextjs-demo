@@ -19,7 +19,7 @@ var _initializerWarningHelper2 = _interopRequireDefault(require("@babel/runtime/
 
 var _typeorm = require("typeorm");
 
-var _post = require("./post");
+var _Post = require("./Post");
 
 var _Comment = require("./Comment");
 
@@ -30,7 +30,7 @@ var User = (_dec = (0, _typeorm.Entity)('users'), _dec2 = (0, _typeorm.PrimaryGe
 }), _dec6 = (0, _typeorm.UpdateDateColumn)({
   type: 'timestamp without time zone'
 }), _dec7 = (0, _typeorm.OneToMany)(function (type) {
-  return _post.Post;
+  return _Post.Post;
 }, function (post) {
   return post.auther;
 }), _dec8 = (0, _typeorm.OneToMany)(function (type) {

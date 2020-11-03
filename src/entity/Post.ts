@@ -13,9 +13,6 @@ export class Post {
   @Column('text')
   content: string
 
-  @Column('int')
-  auther_id: number
-
   @CreateDateColumn({type: 'timestamp without time zone'})
   created_at: Date
 

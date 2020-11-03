@@ -6,6 +6,7 @@
     "dev": "concurrently \"next dev\" \"babel -w ./src --out-dir dist --extensions .ts,.tsx\"",
     "build": "next build",
     "start": "next start",
+    "seed:db": "node dist/seed.js",
     "entity:create": "typeorm entity:create",
     "migration:create": "typeorm migration:create",
     "migration:run": "typeorm migration:run",

@@ -1,17 +1,11 @@
 import {Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn} from 'typeorm';
-import {Post} from './post'
+import {Post} from './Post'
 import {User} from './User'
 
 @Entity('comments')
 export class Comment {
   @PrimaryGeneratedColumn('increment')
   id: number
-
-  @Column('int')
-  auther_id: number
-
-  @Column('int')
-  post_id: number
 
   @Column('text')
   content: string
