@@ -36,7 +36,7 @@ var _Comment = require("./entity/Comment");
             p1 = new _Post.Post();
             p1.title = 'haha';
             p1.content = 'hhhhhhhhhhhhhhhhhhhhhhhhhhhh';
-            p1.auther = u1;
+            p1.author = u1;
             _context.next = 14;
             return manager.save(p1);
 

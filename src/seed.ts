@@ -20,7 +20,7 @@ createConnection().then(async (connection) => {
   const p1 = new Post()
   p1.title = 'haha'
   p1.content = 'hhhhhhhhhhhhhhhhhhhhhhhhhhhh'
-  p1.auther = u1
+  p1.author = u1
   await manager.save(p1)
   console.info('p1 保存成功')
 

@@ -19,7 +19,7 @@ export class User {
   @UpdateDateColumn({type: 'timestamp without time zone'})
   updated_at: Date
 
-  @OneToMany(type => Post, post => post.auther)
+  @OneToMany(type => Post, post => post.author)
   posts: Post[]
 
   @OneToMany(type => Comment, comment => comment.user)

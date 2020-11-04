@@ -32,7 +32,7 @@ var User = (_dec = (0, _typeorm.Entity)('users'), _dec2 = (0, _typeorm.PrimaryGe
 }), _dec7 = (0, _typeorm.OneToMany)(function (type) {
   return _Post.Post;
 }, function (post) {
-  return post.auther;
+  return post.author;
 }), _dec8 = (0, _typeorm.OneToMany)(function (type) {
   return _Comment.Comment;
 }, function (comment) {

@@ -23,5 +23,5 @@ export class Post {
   comments: Comment[]
  
   @ManyToOne(type => User, user => user.posts)
-  auther: User
+  author: User
 }
