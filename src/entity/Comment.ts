@@ -1,4 +1,4 @@
-import {Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn} from 'typeorm';
+import {Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn} from 'typeorm';
 import {Post} from './Post'
 import {User} from './User'
 
@@ -11,10 +11,10 @@ export class Comment {
   content: string
 
   @CreateDateColumn({type: 'timestamp without time zone'})
-  created_at: Date
+  createdAt: Date
 
   @UpdateDateColumn({type: 'timestamp without time zone'})
-  updated_at: Date
+  updatedAt: Date
 
   @ManyToOne(type => Post, post => post.comments) 
   post: Post

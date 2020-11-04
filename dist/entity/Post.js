@@ -42,8 +42,8 @@ var Post = (_dec = (0, _typeorm.Entity)('posts'), _dec2 = (0, _typeorm.PrimaryGe
   (0, _initializerDefineProperty2["default"])(this, "id", _descriptor, this);
   (0, _initializerDefineProperty2["default"])(this, "title", _descriptor2, this);
   (0, _initializerDefineProperty2["default"])(this, "content", _descriptor3, this);
-  (0, _initializerDefineProperty2["default"])(this, "created_at", _descriptor4, this);
-  (0, _initializerDefineProperty2["default"])(this, "updated_at", _descriptor5, this);
+  (0, _initializerDefineProperty2["default"])(this, "createdAt", _descriptor4, this);
+  (0, _initializerDefineProperty2["default"])(this, "updatedAt", _descriptor5, this);
   (0, _initializerDefineProperty2["default"])(this, "comments", _descriptor6, this);
   (0, _initializerDefineProperty2["default"])(this, "author", _descriptor7, this);
 }, _temp), (_descriptor = (0, _applyDecoratedDescriptor2["default"])(_class2.prototype, "id", [_dec2], {
@@ -61,12 +61,12 @@ var Post = (_dec = (0, _typeorm.Entity)('posts'), _dec2 = (0, _typeorm.PrimaryGe
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor4 = (0, _applyDecoratedDescriptor2["default"])(_class2.prototype, "created_at", [_dec5], {
+}), _descriptor4 = (0, _applyDecoratedDescriptor2["default"])(_class2.prototype, "createdAt", [_dec5], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor5 = (0, _applyDecoratedDescriptor2["default"])(_class2.prototype, "updated_at", [_dec6], {
+}), _descriptor5 = (0, _applyDecoratedDescriptor2["default"])(_class2.prototype, "updatedAt", [_dec6], {
   configurable: true,
   enumerable: true,
   writable: true,
