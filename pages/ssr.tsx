@@ -1,6 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import getDatabaseConnection from '../lib/getDatabaseConnection'
 import { getPosts } from '../lib/posts'
 import styles from '../styles/Home.module.css'
 
@@ -37,6 +38,11 @@ export const Home: NextPage<Props> = (props) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const host = context.req.headers.host
   const files = getPosts()
+
+  const connection = await getDatabaseConnection()
+  const test = await connection.query(`SELECT * FROM USERS`)
+  console.log(test);
+
 
   return {
     props: { posts: files, host: host }
