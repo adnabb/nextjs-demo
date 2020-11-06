@@ -1,16 +1,14 @@
-import { GetStaticProps, GetStaticPaths, NextPage } from 'next'
+import {GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
-import { getPost, getPostIds } from '../../lib/posts'
+import getDatabaseConnection from '../../lib/getDatabaseConnection'
 import styles from '../../styles/Posts.[id].module.css'
 
-type Props = {
+type Prop = {
   post: Post
 }
-
-export const Post: NextPage<Props> = ({post}) => {
-  const { title, date, content } = post
+export const Post: NextPage<Prop> = ({post}) => {
+  const { title, createdAt, content } = post
   const onClick = () => { window.history.back() }
-
   return (
     <>
       <Head>
@@ -19,7 +17,7 @@ export const Post: NextPage<Props> = ({post}) => {
       <main className={styles.main}>
         <button onClick={onClick}>返回上一页</button>
         <h1>{title}</h1>
-        <p>{date}</p>
+        <p>{createdAt}</p>
         <article>
           {content}
         </article>
@@ -30,23 +28,14 @@ export const Post: NextPage<Props> = ({post}) => {
 
 export default Post;
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = getPostIds().map((id) => ({ params: { id } }))
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const {id} = context.query
+  const connection = await getDatabaseConnection()
+  const post = await connection.query(`SELECT * FROM POSTS WHERE ID = ${id}`)
 
   return {
-    paths,
-    fallback: false
+    props: {
+      post: JSON.parse(JSON.stringify(post[0]))
+    }
   }
-}
-
-export const getStaticProps: GetStaticProps = async ({params}) => {
-  const id = params?.id
-  let file: Post
-
-  if (id && typeof id === 'string') {
-    file = getPost(id)
-    return { props: { post: file } }
-  }
-
-  return { props: { post: {} } }
 }

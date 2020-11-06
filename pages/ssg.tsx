@@ -1,24 +1,21 @@
-import { GetServerSideProps, NextPage } from 'next'
+import { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import getDatabaseConnection from '../lib/getDatabaseConnection'
 import { getPosts } from '../lib/posts'
 import styles from '../styles/Home.module.css'
 
 type Props = {
-  posts: Post[]
-  host: string
+  posts: Posts
 }
 
 export const Home: NextPage<Props> = (props) => {
-  const {posts, host} = props
+  const {posts} = props
   return (
     <main className={styles.main}>
       <Head>
         <title>我的博客</title>
       </Head>
-      <h1>SSR - 我的博客</h1>
-      <p>当前地址：{host}</p>
+      <h1>ssg - 我的博客</h1>
       {
         posts.map(file => (
           <div key={file.id}>
@@ -35,17 +32,12 @@ export const Home: NextPage<Props> = (props) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const host = context.req.headers.host
+export const getStaticProps: GetStaticProps = async () => {
+
   const files = getPosts()
 
-  const connection = await getDatabaseConnection()
-  const test = await connection.query(`SELECT * FROM USERS`)
-  console.log(test);
-
-
   return {
-    props: { posts: files, host: host }
+    props: { posts: files }
   }
 }
 
