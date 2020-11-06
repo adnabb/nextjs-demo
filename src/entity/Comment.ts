@@ -22,3 +22,5 @@ export class Comment {
   @ManyToOne(type => User, user => user.comments) 
   user: User
  }
+
+ export default Comment

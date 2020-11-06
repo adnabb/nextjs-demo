@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.User = void 0;
+exports["default"] = exports.User = void 0;
 
 var _initializerDefineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/initializerDefineProperty"));
 
@@ -83,3 +83,5 @@ var User = (_dec = (0, _typeorm.Entity)('users'), _dec2 = (0, _typeorm.PrimaryGe
   initializer: null
 })), _class2)) || _class);
 exports.User = User;
+var _default = User;
+exports["default"] = _default;

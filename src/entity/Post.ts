@@ -25,3 +25,5 @@ export class Post {
   @ManyToOne(type => User, user => user.posts)
   author: User
 }
+
+export default Post

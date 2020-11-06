@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Comment = void 0;
+exports["default"] = exports.Comment = void 0;
 
 var _initializerDefineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/initializerDefineProperty"));
 
@@ -77,3 +77,5 @@ var Comment = (_dec = (0, _typeorm.Entity)('comments'), _dec2 = (0, _typeorm.Pri
   initializer: null
 })), _class2)) || _class);
 exports.Comment = Comment;
+var _default = Comment;
+exports["default"] = _default;
