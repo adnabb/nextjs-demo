@@ -1,7 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, Index } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, Index, BeforeInsert } from 'typeorm';
+import _ from 'lodash';
 import { Post } from './Post';
 import { Comment } from './Comment'
 import getDatabaseConnection from '../../lib/getDatabaseConnection';
+import md5 from 'md5';
 
 @Entity('users')
 export class User {
@@ -27,6 +29,11 @@ export class User {
   @OneToMany(type => Comment, comment => comment.user)
   comments: Comment[]
 
+  @BeforeInsert()
+  generatePassword() {
+    this.password = md5(this.password_input)
+  }
+
   errors = {
     username: [] as string[],
     password: [] as string[],
@@ -36,7 +43,7 @@ export class User {
   passwordConfirm_input: string
 
   async validate() {
-    const foundIfExist = async () => { return (await getDatabaseConnection()).manager.findOne(User, {username: this.username})}
+    const foundIfExist = async () => { return (await getDatabaseConnection()).manager.findOne(User, { username: this.username }) }
     if (!(this.username)) {
       this.errors.username.push('用户名不能为空')
     } else if (!(/\w+/.test(this.username))) {
@@ -53,6 +60,10 @@ export class User {
   hasError() {
     console.log('errors', this.errors)
     return !!(Object.values(this.errors).find(v => v.length > 0))
+  }
+
+  toJSON() {
+    return _.omit(this, ['password', 'password_input', 'passwordConfirm_input'])
   }
 }
 
